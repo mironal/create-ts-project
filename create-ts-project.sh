@@ -25,6 +25,7 @@ if [ -e $GIT_IGNORE_PATH ]; then
     exit -1
 fi
 
+echo CWD=`pwd`
 read -p "Are you sure you want to initialize this directory for the typescript project? [Y/n]" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]

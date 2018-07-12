@@ -3,6 +3,7 @@
 PACKAGE_JSON_PATH=`pwd`/package.json
 PRETTIER_RC_PATH=`pwd`/.prettierrc
 TSLINT_JSON_PATH=`pwd`/tslint.json
+GIT_IGNORE_PATH=`pwd`/.gitignore
 
 if [ -e $PACKAGE_JSON_PATH ]; then
     echo "Since package.json already exists, initialization processing is terminated."
@@ -16,6 +17,11 @@ fi
 
 if [ -e $TSLINT_JSON_PATH ]; then
     echo "Since tslint.json already exists, initialization processing is terminated."
+    exit -1
+fi
+
+if [ -e $GIT_IGNORE_PATH ]; then
+    echo "Since .gitignore already exists, initialization processing is terminated."
     exit -1
 fi
 
@@ -93,6 +99,11 @@ TSLINT_JSON=$(cat << EOS
 EOS
 )
 
+echo
+
+echo "curl -s https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore"
+curl -s https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > $GIT_IGNORE_PATH
+echo \"$GIT_IGNORE_PATH\" created
 echo
 
 echo $PACKAGE_JSON > $PACKAGE_JSON_PATH

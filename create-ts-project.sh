@@ -124,5 +124,6 @@ npm install
 node_modules/.bin/tsc --init
 node_modules/.bin/jest --init
 npm run fmt
+npm outdated
 
 echo "Finished (੭•̀ᴗ•̀)"

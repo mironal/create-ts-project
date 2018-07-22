@@ -59,10 +59,12 @@ PACKAGE_JSON=$(cat << EOS
   "dependencies": {
   },
   "devDependencies": {
-    "jest": "23.4.0",
+    "@types/jest": "23.3",
+    "jest": "23.4.1",
     "prettier": "1.13.7",
-    "tslint": "5.10.0",
-    "tslint-config-prettier": "1.13.0",
+    "ts-jest": "23.0.1",
+    "tslint": "5.11.0",
+    "tslint-config-prettier": "1.14.0",
     "typescript": "2.9.2"
   }
 }
@@ -118,6 +120,10 @@ echo
 echo $TSLINT_JSON > $TSLINT_JSON_PATH
 echo \"$TSLINT_JSON_PATH\" created
 echo
+
+mkdir -p src
+touch src/index.ts
+touch src/index.test.ts
 
 echo "Install dependencies (っ'ヮ'c)"
 

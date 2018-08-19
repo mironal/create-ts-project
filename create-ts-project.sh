@@ -60,9 +60,9 @@ PACKAGE_JSON=$(cat << EOS
   },
   "devDependencies": {
     "@types/jest": "23.3",
-    "jest": "23.4.2",
-    "prettier": "1.14.0",
-    "ts-jest": "23.1.0",
+    "jest": "23.5.0",
+    "prettier": "1.14.2",
+    "ts-jest": "23.1.3",
     "tslint": "5.11.0",
     "tslint-config-prettier": "1.14.0",
     "typescript": "3.0.1"

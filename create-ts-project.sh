@@ -39,38 +39,7 @@ fi
 echo
 echo "Initiate... φ(•ᴗ•๑)"
 
-PACKAGE_JSON=$(cat << EOS
-{
-  "name": "your-project-name-here",
-  "version": "0.0.0",
-  "description": "",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc",
-    "test": "jest",
-    "_fmt": "prettier --config .prettierrc '{*,src/**/*}.{js,jsx,css,ts,tsx,json}'",
-    "_lint": "tslint -p ./tsconfig.json -c ./tslint.json 'src/**/*.{ts,tsx}'",
-    "lint": "npm run _fmt && npm run _lint",
-    "fmt": "npm run _fmt -- --write"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-  },
-  "devDependencies": {
-    "@types/jest": "23.3",
-    "jest": "23.5.0",
-    "prettier": "1.14.2",
-    "ts-jest": "23.1.3",
-    "tslint": "5.11.0",
-    "tslint-config-prettier": "1.14.0",
-    "typescript": "3.0.1"
-  }
-}
-EOS
-)
-
+PACKAGE_JSON=$(curl https://raw.githubusercontent.com/mironal/create-ts-project/master/package.json) 
 PRETTIER_RC=$(cat << EOS
 {
   "semi": false,

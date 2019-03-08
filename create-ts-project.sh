@@ -44,7 +44,7 @@ EOS
 )
 
 ESLINT_RC=$(cat << EOS
-{
+module.exports = {
   "extends": "eslint:recommended",
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

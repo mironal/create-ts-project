@@ -7,7 +7,7 @@
     "build": "tsc",
     "test": "jest",
     "_fmt": "prettier --config .prettierrc '{*,src/**/*}.{js,jsx,css,ts,tsx,json}'",
-    "_lint": "tslint -p ./tsconfig.json -c ./tslint.json 'src/**/*.{ts,tsx}'",
+    "_lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint": "npm run _fmt && npm run _lint",
     "fmt": "npm run _fmt -- --write"
   },

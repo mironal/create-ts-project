@@ -2,7 +2,7 @@
 
 PACKAGE_JSON_PATH=`pwd`/package.json
 PRETTIER_RC_PATH=`pwd`/.prettierrc
-TSLINT_JSON_PATH=`pwd`/tslint.json
+ESLINT_RC_PATH=`pwd`/.eslintrc.js
 GIT_IGNORE_PATH=`pwd`/.gitignore
 
 if [ -e $PACKAGE_JSON_PATH ]; then
@@ -12,11 +12,6 @@ fi
 
 if [ -e $PRETTIER_RC_PATH ]; then
     echo "Since .prettierrc already exists, initialization processing is terminated."
-    exit -1
-fi
-
-if [ -e $TSLINT_JSON_PATH ]; then
-    echo "Since tslint.json already exists, initialization processing is terminated."
     exit -1
 fi
 
@@ -39,7 +34,7 @@ fi
 echo
 echo "Initiate... φ(•ᴗ•๑)"
 
-PACKAGE_JSON=$(curl https://raw.githubusercontent.com/mironal/create-ts-project/master/package.json) 
+PACKAGE_JSON=$(curl https://raw.githubusercontent.com/mironal/create-ts-project/master/package.json)
 PRETTIER_RC=$(cat << EOS
 {
   "semi": false,
@@ -48,25 +43,14 @@ PRETTIER_RC=$(cat << EOS
 EOS
 )
 
-TSLINT_JSON=$(cat << EOS
+ESLINT_RC=$(cat << EOS
 {
-  "defaultSeverity": "error",
-  "extends": ["tslint:recommended", "tslint-config-prettier"],
-  "jsRules": {},
-  "rules": {
-    "no-null-keyword": true,
-    "jsx-no-lambda": false,
-    "no-unused-variable": [true, { "ignore-pattern": "^_" }],
-    "trailing-comma": false,
-    "interface-name": [true, "never-prefix"],
-    "member-ordering": false,
-    "semicolon": [true, "never"],
-    "arrow-parens": false,
-    "object-literal-sort-keys": false,
-    "ordered-imports": false,
-    "no-non-null-assertion": false
-  },
-  "rulesDirectory": []
+  "extends": "eslint:recommended",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  }
 }
 EOS
 )
@@ -86,8 +70,8 @@ echo $PRETTIER_RC > $PRETTIER_RC_PATH
 echo \"$PRETTIER_RC_PATH\" created
 echo
 
-echo $TSLINT_JSON > $TSLINT_JSON_PATH
-echo \"$TSLINT_JSON_PATH\" created
+echo $ESLINT_RC > $ESLINT_RC_PATH
+echo \"$ESLINT_RC_PATH\" created
 echo
 
 mkdir -p src
